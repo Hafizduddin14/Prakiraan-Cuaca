@@ -9,8 +9,8 @@ Modified @ Farzain - zFz
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 
-$channelAccessToken = 'YOUR-CHANNEL-ACCESS-TOKEN'; //sesuaikan 
-$channelSecret = 'YOUR-CHANNEL-SECRET-CODE';//sesuaikan
+$channelAccessToken = 'uesE6vQvZ4yYZXZB6Gx6kyoWBfFvX8pp1tehaWVic3/wUmOD2qwQzhtBiHLVXUyfBBFO+WnMK0xLc6SpSfvUUIhN3bhZDlPuw/+SEsfSTaC1cRuigfU/SeVyXSGR8lJ1THvrzPZecxhQ2no62l6fFwdB04t89/1O/w1cDnyilFU='; //sesuaikan 
+$channelSecret = 'a50c21588e34bc5764fee8dc868ee1d2';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
@@ -37,15 +37,15 @@ if (count($pesan_datang) > 2) {
 }
 
 #-------------------------[Function]-------------------------#
-function cuaca($keyword) {
+function kota($keyword) {
     $uri = "http://api.openweathermap.org/data/2.5/weather?q=" . $keyword . ",ID&units=metric&appid=e172c2f3a3c620591582ab5242e0e6c4";
 
     $response = Unirest\Request::get("$uri");
 
     $json = json_decode($response->raw_body, true);
-    $result = "Halo Kak ^_^ Ini ada Ramalan Cuaca Untuk Daerah ";
+    $result = "Hai ^_^ ini ada prediksi cuaca untuk daerah ";
 	$result .= $json['name'];
-	$result .= " Dan Sekitarnya";
+	$result .= " dan sekitarnya";
 	$result .= "\n\nCuaca : ";
 	$result .= $json['weather']['0']['main'];
 	$result .= "\nDeskripsi : ";
@@ -62,7 +62,7 @@ function cuaca($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Halo Kak ^_^\nAku Bot Prediksi Cuaca, Kamu bisa mengetahui prediksi cuaca di daerah kamu sesuai dengan sumber BMKG";
+    $text = "Hai ^_^\nSaya adalah Bot Prediksi Cuaca, kamu bisa mengetahui prediksi cuaca diseluruh kota di dunia, silahkan ketik\n\n/kota <spasi> nama kota\n\ncontoh: /kota bandung\n\nnanti saya kasih tau prediksi cuacanya ^_^";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -76,9 +76,9 @@ if ($type == 'join' || $command == '/menu') {
 
 //pesan bergambar
 if($message['type']=='text') {
-	    if ($command == '/cuaca') {
+	    if ($command == '/kota') {
 
-        $result = cuaca($options);
+        $result = kota($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
@@ -97,7 +97,7 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Makasih Kak Stikernya ^_^'										
+										'text' => 'Makasih stikernya ^_^'										
 									
 									)
 							)
