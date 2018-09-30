@@ -62,7 +62,7 @@ function kota($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Hai ^_^\nSaya adalah Bot Prediksi Cuaca, kamu bisa mengetahui prediksi cuaca diseluruh kota di dunia, silahkan ketik\n\n/kota <spasi> nama kota\n\ncontoh: /kota bandung\n\nnanti saya kasih tau prediksi cuacanya ^_^";
+    $text = "Hai ^_^\nSaya adalah Bot Prediksi Cuaca, kamu bisa mengetahui prediksi cuaca diseluruh kota di Indonesia, silahkan ketik\n\n/kota <spasi> nama kota\n\ncontoh: /kota bandung\n\nnanti saya kasih tau prediksi cuacanya ^_^";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
